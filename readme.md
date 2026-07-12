@@ -9,6 +9,7 @@ A lightweight, high-performance, and native statistical toolkit for the Red prog
 * **Flexible Aggregation:** Process datasets in a single pass using the generic `juxt-map` architecture.
 * **Sample & Population Precision:** Dedicated refinements and functions to correctly handle unbiased sample metrics ($n-1$) versus true population metrics ($n$).
 * **Native Visualizations:** Built-in charting engines utilizing Red's lightweight `draw` dialect.
+    https://github.com/hinjolicious/plotter
 
 ---
 
@@ -95,7 +96,7 @@ freq-dist data 10 ; Generates parallel bin/count arrays
 
 ---
 
-## Data Visualization (TBA)
+## Data Visualization (Early: see sample code)
 
 The library includes a native renderer built straight into Red's `draw` dialect. You can plot frequency distributions, set custom graph margins, and overlay trend regressions without touching external bindings.
 
