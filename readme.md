@@ -9,6 +9,7 @@ A lightweight, high-performance, and native statistical toolkit for the Red prog
 * **Flexible Aggregation:** Process datasets in a single pass using the generic `juxt-map` architecture.
 * **Sample & Population Precision:** Dedicated refinements and functions to correctly handle unbiased sample metrics ($n-1$) versus true population metrics ($n$).
 * **Native Visualizations:** Built-in charting engines utilizing Red's lightweight `draw` dialect.
+    https://github.com/hinjolicious/plotter
 
 ---
 
