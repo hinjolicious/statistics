@@ -21,10 +21,10 @@ data |> [juxt-map it [
 	'Modes	modes 
 	
 	'StdDev		[stddev/sm it m]
-	'Pop-StdDev [stddev/sm/pop it m]
+	'StdDev-pop [stddev/sm/pop it m]
 	
 	'Variance 		[variance/sm it m]
-	'Pop-Variance 	[variance/sm/pop it m]
+	'Variance-pop 	[variance/sm/pop it m]
 	
 	'Mid-Range 		mid-range 
 	'Q1 			q1
@@ -40,12 +40,12 @@ data |> [juxt-map it [
 	
 	'Median-Skewness 		[median-skewness/sm it m]
 	
-	'Sam-Skewness			[sam-skewness/sm it m]
-	'Pop-Skewness 			[pop-skewness/sm it m]
-	'Sam-Kurtosis 			[sam-kurtosis/sm it m]
-	'Pop-Kurtosis 			[pop-kurtosis/sm it m]
-	'Sam-Excess-Kurtosis 	[sam-excess-kurtosis/sm it m]
-	'Pop-Excess-Kurtosis 	[pop-excess-kurtosis/sm it m]
+	'Skewness				[skewness/sm it m]
+	'Skewness-pop 			[skewness/pop/sm it m]
+	'Kurtosis 				[kurtosis/sm it m]
+	'Kurtosis-pop 			[kurtosis/pop/sm it m]
+	'Kurtosis-excess 		[kurtosis/excess/sm it m]
+	'Kurtosis-excess-pop 	[kurtosis/excess/pop/sm it m]
 	
 	'CV 			coeff-var
 	'RSD 			rel-stddev

@@ -160,79 +160,48 @@ median-skewness: function [x [series!] /sm m0[number!]] [
 	3 * (m - (median x)) / (stddev/sm x m)
 ]
 
-; Y1 Skewness (sample)
-sam-skewness: function [x [series!] /sm m0 [number!]] [
+; Y1 Skewness
+skewness: function [x [series!] /pop /sm m0 [number!]] [
 ; moment skewness
 ; SAMPLE skewness in calculatorsoup
 	n: count x
 	m: either sm [m0] [mean x]
 	sd: stddev/sm x m
 	if sd = 0 [return 0.0]
-
-	n / ((n - 1) * (n - 2)) * ( s: 0  foreach xi x [ s: s + (((xi - m) / sd) ** 3) ] )
-]
-
-; Skewness (pop)
-pop-skewness: function [x [series!] /sm m0 [number!]] [
-; POPULATION skewness in calculatorsoup
-; pearson skewness
-; this also momen skewness, Momentt / Fisher-Pearson skewness
-	n: count x
-	m: either sm [m0] [mean x]
-	sd: stddev/sm x m
-	if sd = 0 [return 0.0]
 	
-	(s: 0  foreach xi x [ s: s + ((xi - m) ** 3) ]) / (n * (sd ** 3))
+	either pop [ ; population
+		(s: 0  foreach xi x [ s: s + ((xi - m) ** 3) ]) 
+			/ (n * (sd ** 3))
+	][ ; sample
+		n / ((n - 1) * (n - 2)) 
+			* ( s: 0  foreach xi x [ s: s + (((xi - m) / sd) ** 3) ] )
+	]
 ]
 
 ; == KURTOSIS ==
 
-; B2
-sam-kurtosis: function [x[series!] /sm m0[number!]] [ 
+kurtosis: function [x [series!] /excess /pop /sm m0 [number!]] [ 
 ; kurtosis for sample (calculatorsoup)
 	n: count x 
 	m: either sm [m0] [mean x]
 	sd: stddev/sm x m
 	if sd = 0 [return 0.0]
-	
-	( n * (n + 1)) / ((n - 1) * (n - 2) * (n - 3)) 
-		* ( s: 0  foreach xi x [ s: s + (((xi - m) / sd) ** 4) ] )
-]
 
-pop-kurtosis: function [x[series!] /sm m0[number!]][
-; Kurtosis for population (from calculatorsoup)
-; common in stats, platykurtic, lighter tails 
-    n: count x
-	m: either sm [m0] [mean x]
-    sd: stddev/sm x m
-    if sd = 0 [return 0.0]
-	
-    ;( s: 0  foreach xi x [ s: s + ((xi - m) ** 4) ] ) / (n * (sd ** 4))
-	; simplified to:
-
-	1 / n * ( s: 0  foreach xi x [ s: s + (((xi - m) / sd) ** 4) ] )
-]
-
-;== EXCESS-KURTOSIS ==
-
-; A4
-sam-excess-kurtosis: function [x[series!] /sm m0[number!]] [ 
-; kurtosis excess for sample (excel, sheets) (from calculatorsoup)
-; aka. moment kurtosis
-	n: count x 
-	m: either sm [m0] [mean x]
-	sd: stddev/sm x m
-	if sd = 0 [return 0.0]
-	
-	( n * (n + 1)) / ((n - 1) * (n - 2) * (n - 3)) 
-		* ( s: 0  foreach xi x [ s: s + (((xi - m) / sd) ** 4) ] )
-		- ( (3 * ((n - 1) ** 2)) / ((n - 2) * (n - 3)) )
-]
-
-pop-excess-kurtosis: function [x[series!] /sm m0[number!]] [ 
-; excess kurtosis for population (excel, sheets) (from calculatorsoup)
-; aka. moment kurtosis
-	(pop-kurtosis/sm x m0) - 3
+	either excess [ ; kurtosis excess (alpha4) - in Excell / Sheets
+		( n * (n + 1)) 
+			/ ((n - 1) * (n - 2) * (n - 3)) 
+			* ( s: 0  foreach xi x [ s: s + (((xi - m) / sd) ** 4) ] )
+			- ( (3 * ((n - 1) ** 2)) / ((n - 2) * (n - 3)) )
+			- either pop [3][0] ; minus 3 for population
+	][ ; kurtosis (beta2)
+		either pop [ ; population
+			1 / n * ( s: 0  foreach xi x [ s: s + (((xi - m) / sd) ** 4) ] )
+		][ ; sample
+			( n * (n + 1)) 
+				/ ((n - 1) * (n - 2) * (n - 3)) 
+				* ( s: 0  foreach xi x [ s: s + (((xi - m) / sd) ** 4) ] )
+		]
+	]
 ]
 
 ; CV
