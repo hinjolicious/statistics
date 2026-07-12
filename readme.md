@@ -96,7 +96,7 @@ freq-dist data 10 ; Generates parallel bin/count arrays
 
 ---
 
-## Data Visualization (TBA)
+## Data Visualization (Very Early: please see the plotting example!)
 
 ![Distribution Chart](images/histogram_preview.png)
 
