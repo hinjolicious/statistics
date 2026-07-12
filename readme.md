@@ -41,8 +41,8 @@ analysis: data |> [juxt-map it [
     'stddev-pop   stddev/pop
     'variance     variance 
     'variance-pop variance/pop 
-    'mad:         mad
-    'gini:        gini
+    'mad          mad
+    'gini         gini
 ]]
 
 probe analysis
