@@ -11,6 +11,10 @@ A lightweight, high-performance, and native statistical toolkit for the Red prog
 * **Native Visualizations:** Built-in charting engines utilizing Red's lightweight `draw` dialect.
     https://github.com/hinjolicious/plotter
 
+## TBA
+
+* Number generator: random, sorted, reversed, sinusoidal, normal, un-equal distribution, etc.
+* Normal regression?
 ---
 
 ## Installation
