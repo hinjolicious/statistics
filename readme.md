@@ -14,7 +14,8 @@ A lightweight, high-performance, and native statistical toolkit for the Red prog
 ## TBA
 
 * Number generator: random, sorted, reversed, sinusoidal, normal, un-equal distribution, etc.
-* Normal regression?
+  - Ziggurat normal distribution generator --> done!
+* Normal regression fitting --> done!
 ---
 
 ## Installation
