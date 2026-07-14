@@ -3,7 +3,7 @@ Red []
 #include %../stats.red
 #include %../freq-dist.red
 #include %../num-gen.red
-#include %../normal-ziggurat.red
+#include %../ziggurat.red
 #include %../../plotter/plotter.red
 #include %../../plotter/nice-range.red
 #include %../../plotter/nice-bands.red
