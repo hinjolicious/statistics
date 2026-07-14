@@ -104,7 +104,7 @@ seq: function [
 ]
 
 new: function [mu [float!] sigma [float!]][
-	has [] bind 
+	func [] bind 
 		[ seq * s + m ] 
 		object [m: mu s: sigma]
 ]
@@ -121,11 +121,11 @@ seq-ziggurat: :ziggurat/seq
 comment {
 ;; --- Test Stream ---
 print "Streaming 100 single normal numbers dynamically:"
-loop 100 [print seq-ziggurat]
+loop 10 [print seq-ziggurat]
 
 ; new ziggurat normal distribution with a custom mean and stddev
 print "IQ:"
 iq: ziggurat/new 100.0 15.0
-loop 100 [print iq]
+loop 10 [print iq]
 
 }
