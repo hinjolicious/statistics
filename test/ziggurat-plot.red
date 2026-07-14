@@ -34,7 +34,7 @@ foreach [ttl nums] list [
 				600x400 
 				demo-data 
 				(rejoin [(ttl) " - " length? nums " items"])
-				"Sample" 
+				rejoin ["Sample (mean " mean nums " stddev: " stddev nums ")"]
 				"Frequency"
 		]
 	]
