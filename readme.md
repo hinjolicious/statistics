@@ -104,6 +104,7 @@ freq-dist data 10 ; Generates parallel bin/count arrays
 ## Data Visualization (Very Early: please see the plotting example!)
 
 ![Distribution Chart](images/histogram_preview.png)
+![Distribution Chart](images/normal-fit.png)
 
 The library includes a native renderer built straight into Red's `draw` dialect. You can plot frequency distributions, set custom graph margins, and overlay trend regressions without touching external bindings.
 
